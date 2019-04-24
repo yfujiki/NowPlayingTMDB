@@ -22,6 +22,9 @@
 		DBE3D06922704DEF00836C2E /* MoviesPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */; };
 		DBE3D06B2270601500836C2E /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D06A2270601500836C2E /* APIManagerTests.swift */; };
 		DBE3D06E227061A900836C2E /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE3D06D227061A900836C2E /* OHHTTPStubs.framework */; };
+		DBE3D0722270635B00836C2E /* Similar.json in Resources */ = {isa = PBXBuildFile; fileRef = DBE3D0712270635B00836C2E /* Similar.json */; };
+		DBE3D0732270642D00836C2E /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE3D06D227061A900836C2E /* OHHTTPStubs.framework */; };
+		DBE3D0742270793900836C2E /* NowPlaying.json in Resources */ = {isa = PBXBuildFile; fileRef = DBE3D0702270632700836C2E /* NowPlaying.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,8 @@
 		DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPageTests.swift; sourceTree = "<group>"; };
 		DBE3D06A2270601500836C2E /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 		DBE3D06D227061A900836C2E /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		DBE3D0702270632700836C2E /* NowPlaying.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NowPlaying.json; sourceTree = "<group>"; };
+		DBE3D0712270635B00836C2E /* Similar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Similar.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE3D0732270642D00836C2E /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +141,8 @@
 				DBE3D0622270435800836C2E /* MovieTests.swift */,
 				DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */,
 				DBE3D06A2270601500836C2E /* APIManagerTests.swift */,
+				DBE3D0702270632700836C2E /* NowPlaying.json */,
+				DBE3D0712270635B00836C2E /* Similar.json */,
 			);
 			path = NowPlayingTMDBTests;
 			sourceTree = "<group>";
@@ -289,6 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE3D0742270793900836C2E /* NowPlaying.json in Resources */,
+				DBE3D0722270635B00836C2E /* Similar.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +569,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R9L632HWAR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = NowPlayingTMDBTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +594,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R9L632HWAR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = NowPlayingTMDBTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

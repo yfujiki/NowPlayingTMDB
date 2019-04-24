@@ -94,8 +94,7 @@ class APIManager: APIManagerProtocol {
                     let moviesPage = try MoviesPage(from: data)
                     let result = Result<MoviesPage, Error>.success(moviesPage)
                     completionBlock(result)
-                } catch {
-                    let error = NetworkError.badData as Error
+                } catch(let error) {
                     let result = Result<MoviesPage, Error>.failure(error)
                     completionBlock(result)
                 }
@@ -120,8 +119,7 @@ class APIManager: APIManagerProtocol {
                     let moviesPage = try MoviesPage(from: data)
                     let result = Result<MoviesPage, Error>.success(moviesPage)
                     completionBlock(result)
-                } catch {
-                    let error = NetworkError.badData as Error
+                } catch(let error) {
                     let result = Result<MoviesPage, Error>.failure(error)
                     completionBlock(result)
                 }
