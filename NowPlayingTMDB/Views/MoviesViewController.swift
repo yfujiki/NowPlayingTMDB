@@ -9,7 +9,7 @@
 import UIKit
 import os
 
-class ViewController: UIViewController {
+class MoviesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
