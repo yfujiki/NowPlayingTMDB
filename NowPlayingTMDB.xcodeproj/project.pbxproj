@@ -17,6 +17,8 @@
 		DBE3D05F227040DA00836C2E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D05E227040DA00836C2E /* Movie.swift */; };
 		DBE3D0612270429000836C2E /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D0602270429000836C2E /* JSONCodable.swift */; };
 		DBE3D0632270435800836C2E /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D0622270435800836C2E /* MovieTests.swift */; };
+		DBE3D06722704DA200836C2E /* MoviesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D06622704DA200836C2E /* MoviesPage.swift */; };
+		DBE3D06922704DEF00836C2E /* MoviesPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		DBE3D05E227040DA00836C2E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DBE3D0602270429000836C2E /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 		DBE3D0622270435800836C2E /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
+		DBE3D06622704DA200836C2E /* MoviesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPage.swift; sourceTree = "<group>"; };
+		DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				DBE3D04322703FD200836C2E /* NowPlayingTMDBTests.swift */,
 				DBE3D04522703FD200836C2E /* Info.plist */,
 				DBE3D0622270435800836C2E /* MovieTests.swift */,
+				DBE3D06822704DEF00836C2E /* MoviesPageTests.swift */,
 			);
 			path = NowPlayingTMDBTests;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			children = (
 				DBE3D05E227040DA00836C2E /* Movie.swift */,
 				DBE3D0602270429000836C2E /* JSONCodable.swift */,
+				DBE3D06622704DA200836C2E /* MoviesPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 			files = (
 				DBE3D03122703FD100836C2E /* ViewController.swift in Sources */,
 				DBE3D02F22703FD100836C2E /* AppDelegate.swift in Sources */,
+				DBE3D06722704DA200836C2E /* MoviesPage.swift in Sources */,
 				DBE3D05F227040DA00836C2E /* Movie.swift in Sources */,
 				DBE3D0612270429000836C2E /* JSONCodable.swift in Sources */,
 			);
@@ -294,6 +301,7 @@
 			files = (
 				DBE3D0632270435800836C2E /* MovieTests.swift in Sources */,
 				DBE3D04422703FD200836C2E /* NowPlayingTMDBTests.swift in Sources */,
+				DBE3D06922704DEF00836C2E /* MoviesPageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
