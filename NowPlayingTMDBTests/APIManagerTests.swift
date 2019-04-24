@@ -103,4 +103,60 @@ class APIManagerTests: XCTestCase {
         let result = XCTWaiter.wait(for: [page, totalPage, totalResults, resultsCount], timeout: 2)
         XCTAssert(result == .completed)
     }
+
+    private func setUpNowPlayingBadData() {
+        stub(condition: isHost("api.themoviedb.org") && isPath("/3/movie/now_playing")) { _ in
+            return OHHTTPStubsResponse(
+                fileAtPath: OHPathForFile("NowPlaying_Bad.json", type(of: self))!,
+                statusCode: 200,
+                headers: ["Content-Type":"application/json"]
+            )
+        }
+    }
+
+    func testNowPlayingBadData() {
+        setUpNowPlayingBadData()
+
+        let decodeError = expectation(description: "Decoding Error")
+
+        apiManager.nowPlaying(page: 2) { result in
+            switch(result) {
+            case .success(_):
+                XCTAssert(false, "Should not succeed in this case")
+            case .failure(_):
+                decodeError.fulfill()
+            }
+        }
+
+        let result = XCTWaiter.wait(for: [decodeError], timeout: 2)
+        XCTAssert(result == .completed)
+    }
+
+    private func setUpSimilarBadData() {
+        stub(condition: isHost("api.themoviedb.org") && isPath("/3/movie/299537/similar")) { _ in
+            return OHHTTPStubsResponse(
+                fileAtPath: OHPathForFile("Similar_Bad.json", type(of: self))!,
+                statusCode: 200,
+                headers: ["Content-Type":"application/json"]
+            )
+        }
+    }
+
+    func testSimilarBadData() {
+        setUpSimilarBadData()
+
+        let decodeError = expectation(description: "Decoding Error")
+
+        apiManager.similar(referenceMovieId: 299537, page: 1) { result in
+            switch(result) {
+            case .success(_):
+                XCTAssert(false, "Should not succeed in this case")
+            case .failure(_):
+                decodeError.fulfill()
+            }
+        }
+
+        let result = XCTWaiter.wait(for: [decodeError], timeout: 2)
+        XCTAssert(result == .completed)
+    }
 }
