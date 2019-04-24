@@ -41,7 +41,9 @@ class APIManager: APIManagerProtocol {
         guard let components = NSURLComponents(string: path) else {
             let error = NetworkError.badURL as Error
             let result = Result<Data, Error>.failure(error)
-            completionBlock(result)
+            DispatchQueue.main.async {
+                completionBlock(result)
+            }
             return
         }
 
@@ -54,7 +56,9 @@ class APIManager: APIManagerProtocol {
         guard let url = components.url else {
             let error = NetworkError.badParams as Error
             let result = Result<Data, Error>.failure(error)
-            completionBlock(result)
+            DispatchQueue.main.async {
+                completionBlock(result)
+            }
             return
         }
 
@@ -63,19 +67,25 @@ class APIManager: APIManagerProtocol {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 let result = Result<Data, Error>.failure(error)
-                completionBlock(result)
+                DispatchQueue.main.async {
+                    completionBlock(result)
+                }
                 return
             }
 
             guard let data = data else {
                 let error = NetworkError.badData as Error
                 let result = Result<Data, Error>.failure(error)
-                completionBlock(result)
+                DispatchQueue.main.async {
+                    completionBlock(result)
+                }
                 return
             }
 
             let result = Result<Data, Error>.success(data)// No error means there should be data
-            completionBlock(result)
+            DispatchQueue.main.async {
+                completionBlock(result)
+            }
         }
 
         task.resume()
