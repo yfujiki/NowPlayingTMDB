@@ -28,6 +28,8 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Now Playing"
+
         collectionView.register(UINib(nibName: "PosterCell", bundle: nil), forCellWithReuseIdentifier: PosterCell.self.description())
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
