@@ -14,7 +14,7 @@ class MoviesDataSource: NSObject, UICollectionViewDataSource {
 
     private var cellSize: CGSize = .zero
 
-    private override init() {
+    override init() {
         movies = Array<Movie>()
         super.init()
     }
@@ -26,6 +26,14 @@ class MoviesDataSource: NSObject, UICollectionViewDataSource {
 
     func addMovies(_ additional: Array<Movie>) {
         movies.append(contentsOf: additional)
+    }
+
+    func movie(at index: Int) -> Movie? {
+        guard index >= 0 && index < movies.count else {
+            return nil
+        }
+
+        return movies[index]
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

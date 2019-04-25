@@ -44,4 +44,12 @@ struct Constants {
     static func PORTRAIT_SCREEN_WIDTH() -> CGFloat {
         return min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
     }
+
+    static func PARSE_YEAR_FROM_YYYYMMDD(yyyymmdd: String?) -> String {
+        guard let yyyy = yyyymmdd?.split(separator: "-").first else {
+            return ""
+        }
+
+        return String(yyyy)
+    }
 }
