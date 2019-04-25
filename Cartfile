@@ -1,1 +1,2 @@
 github "AliSoftware/OHHTTPStubs" == 8.0
+github "pinterest/PINRemoteImage" == 3.0.0-beta.14

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class Movie: JSONCodable {
     let voteCount: Int?
@@ -23,4 +24,12 @@ class Movie: JSONCodable {
     let adult: Bool?
     let overview: String?
     let releaseDate: String?
+
+    func posterFullPath(for width: Int) -> String? {
+        guard let posterPath = posterPath else {
+            return nil
+        }
+
+        return "https://image.tmdb.org/t/p/w\(width)/\(posterPath)"
+    }
 }
