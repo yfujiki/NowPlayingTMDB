@@ -45,7 +45,8 @@ class MovieDetailViewController: UIViewController {
         collectionView.register(UINib(nibName: "PosterCell", bundle: nil), forCellWithReuseIdentifier: PosterCell.self.description())
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
-        collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        configureHeaderHeight(for: UIScreen.main.bounds.size)
 
         collectionView.register(UINib(nibName: "MovieDetailView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MovieDetailView.self.description())
 
@@ -65,4 +66,17 @@ class MovieDetailViewController: UIViewController {
         }
     }
 
+    private func configureHeaderHeight(for size: CGSize) {
+        let screenWidth = size.width
+        let detailViewImageWidth = screenWidth / 3
+        let detailViewImageHeight = detailViewImageWidth / 0.675 + 16 * 2
+        let detailViewHeight = (screenWidth <= 375) ? detailViewImageHeight + 122 : detailViewImageHeight
+
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: detailViewHeight)
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        configureHeaderHeight(for: size)
+    }
 }

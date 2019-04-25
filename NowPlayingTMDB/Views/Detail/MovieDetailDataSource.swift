@@ -28,5 +28,4 @@ class MovieDetailDataSource: MoviesDataSource {
 
         return detailView
     }
-
 }
