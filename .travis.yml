@@ -21,4 +21,5 @@ jobs:
       name: "Unit/UI Tests"
       script:
         - set -e -o pipefail
-        - xcodebuild test
+        - xcodebuild build-for-testing -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDB -sdk iphonesimulator ONLY_ACTIVE_ARCH=YES
+        - xctool run-tests -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDB -sdk iphonesimulator ONLY_ACTIVE_ARCH=YES
