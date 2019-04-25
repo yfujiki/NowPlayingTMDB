@@ -12,8 +12,16 @@ import UIKit
 class MoviesDataSource: NSObject, UICollectionViewDataSource {
     private var movies: Array<Movie>
 
-    override init() {
+    private var cellSize: CGSize = .zero
+
+    private override init() {
         movies = Array<Movie>()
+        super.init()
+    }
+
+    convenience init(size: CGSize) {
+        self.init()
+        cellSize = size
     }
 
     func addMovies(_ additional: Array<Movie>) {
@@ -29,7 +37,8 @@ class MoviesDataSource: NSObject, UICollectionViewDataSource {
 
         let movie = movies[indexPath.item]
 
-        cell.setImagePath(imagePath: movie.posterFullPath(for: 500))
+        let imageWidth = Constants.POSTER_IMAGE_WIDTH_FOR_SIZE(size: cellSize)
+        cell.setImagePath(imagePath: movie.posterFullPath(for: Int(imageWidth)))
 
         return cell
     }
