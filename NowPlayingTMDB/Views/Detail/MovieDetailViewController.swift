@@ -27,14 +27,6 @@ class MovieDetailViewController: UIViewController {
         MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
     }()
 
-    private lazy var layout: UICollectionViewFlowLayout = {
-        let collectionLayout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        let height = CGFloat(336)
-        collectionLayout.headerReferenceSize = CGSize(width: Constants.PORTRAIT_SCREEN_WIDTH(), height: height)
-        return collectionLayout
-    }()
-
     private lazy var apiManager = {
         APIManager()
     }()
@@ -70,7 +62,7 @@ class MovieDetailViewController: UIViewController {
         let screenWidth = size.width
         let detailViewImageWidth = screenWidth / 3
         let detailViewImageHeight = detailViewImageWidth / 0.675 + 16 * 2
-        let detailViewHeight = (screenWidth <= 375) ? detailViewImageHeight + 122 : detailViewImageHeight
+        let detailViewHeight = Constants.IS_WIDE_LAYOUT(screenWidth: screenWidth) ? detailViewImageHeight + Constants.DESCRIPTION_AREA_HEIGHT : detailViewImageHeight
 
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: detailViewHeight)

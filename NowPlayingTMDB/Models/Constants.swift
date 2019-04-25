@@ -11,6 +11,10 @@ import CoreGraphics
 import UIKit
 
 struct Constants {
+    static var DESCRIPTION_AREA_HEIGHT: CGFloat {
+        return 146 // ToDo: Need to be calculated dynamically from description text
+    }
+
     static func MOVIE_CELL_SIZE() -> CGSize {
 
         let width = PORTRAIT_SCREEN_WIDTH() / 3 - 20
@@ -51,5 +55,9 @@ struct Constants {
         }
 
         return String(yyyy)
+    }
+
+    static func IS_WIDE_LAYOUT(screenWidth: CGFloat) -> Bool {
+        return (screenWidth <= 414)
     }
 }

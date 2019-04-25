@@ -54,7 +54,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="GFG-PW-Yca" firstAttribute="top" secondItem="6Bg-3H-XGf" secondAttribute="bottom" constant="14" id="0PY-dG-SVs"/>
+                <constraint firstItem="GFG-PW-Yca" firstAttribute="top" secondItem="6Bg-3H-XGf" secondAttribute="bottom" constant="14" placeholder="YES" id="0PY-dG-SVs"/>
                 <constraint firstItem="6Bg-3H-XGf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.33" id="2Pn-wI-uMm"/>
                 <constraint firstItem="U0d-uy-DxU" firstAttribute="top" secondItem="yjf-ou-KQl" secondAttribute="bottom" constant="8" id="5wx-Hc-4Hn"/>
                 <constraint firstItem="lAd-JX-nc7" firstAttribute="top" secondItem="6Bg-3H-XGf" secondAttribute="top" id="6RA-NT-QT2"/>
@@ -68,7 +68,7 @@
                 <constraint firstItem="lAd-JX-nc7" firstAttribute="leading" secondItem="6Bg-3H-XGf" secondAttribute="trailing" constant="8" id="jaV-lh-K3c"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4z4-gd-ak9" secondAttribute="trailing" constant="16" id="lfG-Fu-Nxi"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="U0d-uy-DxU" secondAttribute="trailing" constant="16" id="meh-NJ-8vj"/>
-                <constraint firstItem="GFG-PW-Yca" firstAttribute="leading" secondItem="6Bg-3H-XGf" secondAttribute="leading" id="ulm-kn-onZ"/>
+                <constraint firstItem="GFG-PW-Yca" firstAttribute="leading" secondItem="6Bg-3H-XGf" secondAttribute="leading" placeholder="YES" id="ulm-kn-onZ"/>
                 <constraint firstItem="yjf-ou-KQl" firstAttribute="top" secondItem="4z4-gd-ak9" secondAttribute="bottom" constant="18" id="wAJ-hT-4BL"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
