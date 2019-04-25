@@ -13,14 +13,24 @@ class MoviesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var dataSource = MoviesDataSource()
-    private var apiManager = APIManager()
+    private lazy var dataSource = {
+        MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
+    }()
+
+    private lazy var delegate = {
+        MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+    }()
+
+    private lazy var apiManager = {
+        APIManager()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.register(UINib(nibName: "PosterCell", bundle: nil), forCellWithReuseIdentifier: PosterCell.self.description())
         collectionView.dataSource = dataSource
+        collectionView.delegate = delegate
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
 
         apiManager.nowPlaying(page: 1) { [weak self] result in
