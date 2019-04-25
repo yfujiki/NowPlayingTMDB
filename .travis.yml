@@ -1,0 +1,24 @@
+language: swift
+osx_image: xcode10.2
+xcode_project: NowPlayingTMDB.xcodeproj
+xcode_scheme: NowPlayingTMDB
+xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone Xs
+
+cache:
+  directories:
+    - Carthage
+
+addons:
+  homebrew:
+    brewfile: true
+
+before_install:
+  - carthage bootstrap --platform ios --no-use-binaries --cache-builds
+
+jobs:
+  include:
+    - stage: tests
+      name: "Unit/UI Tests"
+      script:
+        - set -e -o pipefail
+        - xcodebuild test
