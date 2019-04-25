@@ -22,5 +22,5 @@ jobs:
       script:
         - set -e -o pipefail
         - xcodebuild build-for-testing -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDB -sdk iphonesimulator ONLY_ACTIVE_ARCH=YES
-        - xcodebuild test -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDBTest -destination 'platform=iOS Simulator,name=iPhone X,OS=12.2'
-        - xcodebuild test -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDBUITest -destination 'platform=iOS Simulator,name=iPhone X,OS=12.2'
+        - xcodebuild test -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDBTest -destination 'platform=iOS Simulator,name=iPhone X,OS=12.2' | xcpretty
+        - xcodebuild test -project NowPlayingTMDB.xcodeproj -scheme NowPlayingTMDBUITest -destination 'platform=iOS Simulator,name=iPhone X,OS=12.2' | xcpretty
