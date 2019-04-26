@@ -64,7 +64,7 @@ class MovieDetailViewController: UIViewController {
 
         view.isSkeletonable = true
         collectionView.prepareSkeleton { [weak self] _ in
-            self?.view.showAnimatedSkeleton()
+            self?.view.showAnimatedGradientSkeleton()
             self?.apiManager.similar(referenceMovieId: movie.id, page: 1) { [weak self] result in
                 switch(result) {
                 case .success(let moviesPage):
