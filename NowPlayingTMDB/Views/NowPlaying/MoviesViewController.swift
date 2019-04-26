@@ -58,26 +58,23 @@ class MoviesViewController: UIViewController {
             }
         }
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "movieSelected") {
-            let movieDetailViewController = segue.destination as! MovieDetailViewController
-            guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
-                return
-            }
-
-            if let movie = self.dataSource.movie(at: selectedIndexPath.item) {
-                movieDetailViewController.movie = movie
-            }
-
-            collectionView.deselectItem(at: selectedIndexPath, animated: true)
-        }
-    }
 }
 
 extension MoviesViewController: MoviesDelegateSelectionDelegate {
     func didSelectItemAt(item: Int) {
-        performSegue(withIdentifier: "movieSelected", sender: nil)
+        let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+
+        guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
+
+        if let movie = self.dataSource.movie(at: selectedIndexPath.item) {
+            viewController.movie = movie
+        }
+
+        show(viewController, sender: self)
+
+        collectionView.deselectItem(at: selectedIndexPath, animated: true)
     }
 }
 
