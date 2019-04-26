@@ -47,7 +47,7 @@ class MoviesViewControllerUITests: XCTestCase {
         let collectionsQuery = app.collectionViews
         let collectionsElement = collectionsQuery.element
 
-        for _ in 0..<10 {
+        for _ in 0..<5 {
             collectionsElement.swipeUp()
         }
 
