@@ -49,7 +49,7 @@ class MoviesViewController: UIViewController {
         collectionView.isSkeletonable = true
 
         view.isSkeletonable = true
-        collectionView.prepareSkeleton(completion: { [weak self] done in
+        collectionView.prepareSkeleton(completion: { [weak self] _ in
             self?.view.showAnimatedSkeleton()
             self?.apiManager.nowPlaying(page: 1) { [weak self] result in
                 switch(result) {
