@@ -55,10 +55,9 @@ class MovieDetailView: UICollectionReusableView {
         didSet {
             let imageWidth = Constants.POSTER_IMAGE_WIDTH_FOR_SIZE(size: posterImageView?.bounds.size ?? .zero)
             if let imagePath = movie?.posterFullPath(for: Int(imageWidth)) {
-                // ToDo : Placeholder
-                posterImageView?.pin_setImage(from: URL(string: imagePath))
+                posterImageView?.pin_setImage(from: URL(string: imagePath), placeholderImage: UIImage(named: "placeholder"))
             } else {
-                // ToDo : Placeholder
+                posterImageView?.image = UIImage(named: "placeholder")
             }
 
             titleLabel.text = movie?.title
