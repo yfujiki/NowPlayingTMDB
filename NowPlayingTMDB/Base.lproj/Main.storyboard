@@ -38,19 +38,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to load the movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-2H-obR">
+                                <rect key="frame" x="112.5" y="465" width="189.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t7k-7f-kh9" secondAttribute="trailing" id="0d6-MR-18x"/>
                             <constraint firstItem="t7k-7f-kh9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BG4-bk-xRQ"/>
+                            <constraint firstItem="C2e-2H-obR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NDp-CA-hli"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t7k-7f-kh9" secondAttribute="bottom" id="RWt-sF-30Q"/>
                             <constraint firstItem="t7k-7f-kh9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dfa-H4-92q"/>
+                            <constraint firstItem="C2e-2H-obR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="xe8-iz-s9I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="oD2-0G-8Wg"/>
                     <connections>
                         <outlet property="collectionView" destination="t7k-7f-kh9" id="gW1-GQ-e5T"/>
+                        <outlet property="failedLabel" destination="C2e-2H-obR" id="Zha-Gm-vHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
