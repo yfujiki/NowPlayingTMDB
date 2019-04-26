@@ -33,8 +33,10 @@ class MovieDetailViewController: UIViewController {
         return dsc
     }()
 
-    private lazy var delegate = {
-        MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+    private lazy var delegate: MoviesDelegate = {
+        let del = MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+        del.selectionDelegate = self
+        return del
     }()
 
     private lazy var apiManager = {
@@ -91,6 +93,23 @@ class MovieDetailViewController: UIViewController {
     }
 }
 
+extension MovieDetailViewController: MoviesDelegateSelectionDelegate {
+    func didSelectItemAt(item: Int) {
+        let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+
+        guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
+
+        if let movie = self.dataSource.movie(at: selectedIndexPath.item) {
+            viewController.movie = movie
+        }
+
+        show(viewController, sender: self)
+
+        collectionView.deselectItem(at: selectedIndexPath, animated: true)
+    }
+}
 
 extension MovieDetailViewController: MoviesDataSourcePrefetchingDelegate {
     func prefetch(page: Int, afterSuccess: @escaping () -> Void, afterFailure: @escaping () -> Void) {
