@@ -13,7 +13,11 @@ import UIKit
 struct Constants {
     static var TITLE_FONT: UIFont {
         if (UIDevice.current.userInterfaceIdiom == .pad) {
-            return UIFont.systemFont(ofSize: 20)
+            if (PORTRAIT_SCREEN_WIDTH() <= 768) {
+                return UIFont.systemFont(ofSize: 16)
+            } else {
+                return UIFont.systemFont(ofSize: 20)
+            }
         } else {
             return UIFont.systemFont(ofSize: 13)
         }
@@ -21,7 +25,11 @@ struct Constants {
 
     static var VALUE_FONT: UIFont {
         if (UIDevice.current.userInterfaceIdiom == .pad) {
-            return UIFont.systemFont(ofSize: 24)
+            if (PORTRAIT_SCREEN_WIDTH() <= 768) {
+                return UIFont.systemFont(ofSize: 19)
+            } else {
+                return UIFont.systemFont(ofSize: 24)
+            }
         } else {
             return UIFont.systemFont(ofSize: 15)
         }
