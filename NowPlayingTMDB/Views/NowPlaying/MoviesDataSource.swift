@@ -14,6 +14,10 @@ class MoviesDataSource: NSObject, UICollectionViewDataSource {
 
     private var cellSize: CGSize = .zero
 
+    var count: Int {
+        return movies.count
+    }
+
     override init() {
         movies = Array<Movie>()
         super.init()
