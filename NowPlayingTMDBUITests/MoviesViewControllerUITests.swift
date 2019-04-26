@@ -34,7 +34,7 @@ class MoviesViewControllerUITests: XCTestCase {
 
         let predicate = NSPredicate(format: "exists == 1")
         let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 1)
+        wait(for: [collectionViewExists], timeout: 3)
         
         let cells = collectionsQuery.cells
 
@@ -49,7 +49,7 @@ class MoviesViewControllerUITests: XCTestCase {
 
         let predicate = NSPredicate(format: "exists == 1")
         let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 1)
+        wait(for: [collectionViewExists], timeout: 3)
 
         let collectionsElement = collectionsQuery.element
 
