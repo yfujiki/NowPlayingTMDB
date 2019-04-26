@@ -17,6 +17,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Bg-3H-XGf">
                     <rect key="frame" x="16" y="16" width="124" height="184"/>
+                    <accessibility key="accessibilityConfiguration" identifier="posterImage"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="6Bg-3H-XGf" secondAttribute="height" multiplier="675:1000" id="7yv-IK-94c"/>
                     </constraints>
@@ -29,12 +30,14 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4z4-gd-ak9">
                     <rect key="frame" x="148" y="40" width="30" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="title"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0d-uy-DxU">
                     <rect key="frame" x="148" y="100" width="30.5" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="year"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -47,6 +50,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GFG-PW-Yca">
                     <rect key="frame" x="16" y="214" width="78.5" height="18"/>
+                    <accessibility key="accessibilityConfiguration" identifier="description"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
