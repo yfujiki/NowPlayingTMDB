@@ -50,7 +50,7 @@ class MoviesDataSource: NSObject, SkeletonCollectionViewDataSource {
 
         let movie = movies[indexPath.item]
 
-        let imageWidth = Constants.POSTER_IMAGE_WIDTH_FOR_SIZE(size: cellSize)
+        let imageWidth = Global.posterImageWidthForSize(size: cellSize)
         cell.setImagePath(imagePath: movie.posterFullPath(for: Int(imageWidth)))
 
         return cell

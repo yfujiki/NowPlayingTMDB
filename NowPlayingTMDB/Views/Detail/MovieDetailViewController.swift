@@ -25,7 +25,7 @@ class MovieDetailViewController: UIViewController {
     }
 
     private lazy var dataSource = {
-        MovieDetailDataSource(movie: movie, size: Constants.MOVIE_CELL_SIZE())
+        MovieDetailDataSource(movie: movie, size: Global.movieCellSize())
     }()
 
     private lazy var prefetchingDataSource: MoviesDataSourcePrefetching = {
@@ -35,7 +35,7 @@ class MovieDetailViewController: UIViewController {
     }()
 
     private lazy var delegate: MoviesDelegate = {
-        let del = MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+        let del = MoviesDelegate(size: Global.movieCellSize())
         del.selectionDelegate = self
         return del
     }()
@@ -88,8 +88,8 @@ class MovieDetailViewController: UIViewController {
         let detailViewImageHeight = detailViewImageWidth / 0.675 + 16 * 2
         var detailViewHeight = detailViewImageHeight
 
-        if Constants.IS_WIDE_LAYOUT(screenWidth: screenWidth) {
-            detailViewHeight += Constants.DESCRIPTION_AREA_HEIGHT(text: movie?.overview ?? "", width: size.width)
+        if Global.isWideLayout(screenWidth: screenWidth) {
+            detailViewHeight += Global.descriptionAreaHeight(text: movie?.overview ?? "", width: size.width)
         }
 
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout

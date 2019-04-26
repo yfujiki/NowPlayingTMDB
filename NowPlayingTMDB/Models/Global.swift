@@ -10,25 +10,33 @@ import Foundation
 import CoreGraphics
 import UIKit
 
-struct Constants {
-    static var TITLE_FONT: UIFont {
+struct Global {
+    static var titleFont: UIFont {
         if (UIDevice.current.userInterfaceIdiom == .pad) {
-            return UIFont.systemFont(ofSize: 20)
+            if (portraitScreenWidth() <= 768) {
+                return UIFont.systemFont(ofSize: 16)
+            } else {
+                return UIFont.systemFont(ofSize: 20)
+            }
         } else {
             return UIFont.systemFont(ofSize: 13)
         }
     }
 
-    static var VALUE_FONT: UIFont {
+    static var valueFont: UIFont {
         if (UIDevice.current.userInterfaceIdiom == .pad) {
-            return UIFont.systemFont(ofSize: 24)
+            if (portraitScreenWidth() <= 768) {
+                return UIFont.systemFont(ofSize: 19)
+            } else {
+                return UIFont.systemFont(ofSize: 24)
+            }
         } else {
             return UIFont.systemFont(ofSize: 15)
         }
     }
 
-    static func DESCRIPTION_AREA_HEIGHT(text: String, width: CGFloat) -> CGFloat {
-        let font: UIFont = VALUE_FONT
+    static func descriptionAreaHeight(text: String, width: CGFloat) -> CGFloat {
+        let font: UIFont = valueFont
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let finalSize = (text as NSString).boundingRect(with: size,
                                         options: NSStringDrawingOptions.usesLineFragmentOrigin,
@@ -37,17 +45,17 @@ struct Constants {
         return finalSize.height + 24
     }
 
-    static func MOVIE_CELL_SIZE() -> CGSize {
+    static func movieCellSize() -> CGSize {
 
-        let width = PORTRAIT_SCREEN_WIDTH() / 3 - 20
+        let width = portraitScreenWidth() / 3 - 20
 
         // Aspect ratio of poster image is 1:0.675
         // https://help.imdb.com/article/contribution/images-videos/imdb-image-faqs/G64MGN2G43F42PES#
         return CGSize(width: width, height: width / 0.675)
     }
 
-    static func POSTER_IMAGE_WIDTH_FOR_SIZE(size: CGSize) -> Int {
-        let exactHeight = size.height * UIScreen.main.scale * MOVIE_CELL_SIZE().height
+    static func posterImageWidthForSize(size: CGSize) -> Int {
+        let exactHeight = size.height * UIScreen.main.scale * movieCellSize().height
         let exactWidth = exactHeight * 0.675
 
         // From my experimentation it seems it only supports 200/300/400/500 width
@@ -67,11 +75,11 @@ struct Constants {
         return width
     }
 
-    static func PORTRAIT_SCREEN_WIDTH() -> CGFloat {
+    static func portraitScreenWidth() -> CGFloat {
         return min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
     }
 
-    static func PARSE_YEAR_FROM_YYYYMMDD(yyyymmdd: String?) -> String {
+    static func parseYearFromYYYYMMDD(yyyymmdd: String?) -> String {
         guard let yyyy = yyyymmdd?.split(separator: "-").first else {
             return ""
         }
@@ -79,7 +87,7 @@ struct Constants {
         return String(yyyy)
     }
 
-    static func IS_WIDE_LAYOUT(screenWidth: CGFloat) -> Bool {
+    static func isWideLayout(screenWidth: CGFloat) -> Bool {
         return (screenWidth <= 414)
     }
 }
