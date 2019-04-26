@@ -16,6 +16,7 @@ class FastlaneSnapshot: XCTestCase {
         
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         let app = XCUIApplication()
+        setupSnapshot(app)
         app.launchEnvironment = ["UITEST": "true"]
         app.launch()
         
@@ -30,7 +31,7 @@ class FastlaneSnapshot: XCTestCase {
         // Wait for all the images to load
         Thread.sleep(until: Date(timeIntervalSinceNow: 2))
         
-        snapshot("0NowPlaying")
+        snapshot("1NowPlaying")
     }
 
     func testDetail() {
@@ -51,6 +52,6 @@ class FastlaneSnapshot: XCTestCase {
         // Wait for all the images to load
         Thread.sleep(until: Date(timeIntervalSinceNow: 2))
 
-        snapshot("1Detail")
+        snapshot("2Detail")
     }
 }
