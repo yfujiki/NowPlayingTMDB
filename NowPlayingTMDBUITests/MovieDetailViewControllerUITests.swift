@@ -30,9 +30,7 @@ class MovieDetailViewControllerUITests: XCTestCase {
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
         
-        let predicate = NSPredicate(format: "exists == 1")
-        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 3)
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
 
         let cells = collectionsQuery.cells
         let firstCell = cells.element.firstMatch
@@ -47,9 +45,7 @@ class MovieDetailViewControllerUITests: XCTestCase {
         let app = XCUIApplication()
         
         let posterImage = app.images.element(matching: .any, identifier: "posterImage")
-        let predicate = NSPredicate(format: "exists == 1")
-        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
-        wait(for: [posterImageExpectation], timeout: 3)
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")
@@ -72,9 +68,7 @@ class MovieDetailViewControllerUITests: XCTestCase {
         let app = XCUIApplication()
 
         let posterImage = app.images.element(matching: .any, identifier: "posterImage")
-        let predicate = NSPredicate(format: "exists == 1")
-        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
-        wait(for: [posterImageExpectation], timeout: 3)
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
 
         app.swipeUp()
 
@@ -93,9 +87,7 @@ class MovieDetailViewControllerUITests: XCTestCase {
         let app = XCUIApplication()
         
         let posterImage = app.images.element(matching: .any, identifier: "posterImage")
-        let predicate = NSPredicate(format: "exists == 1")
-        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
-        wait(for: [posterImageExpectation], timeout: 3)
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
 
         app.swipeUp()
 
@@ -107,9 +99,7 @@ class MovieDetailViewControllerUITests: XCTestCase {
         firstCell.tap()
 
         let posterImage2 = app.images.element(matching: .any, identifier: "posterImage")
-        let predicate2 = NSPredicate(format: "exists == 1")
-        let posterImageExpectation2 = expectation(for: predicate2, evaluatedWith: posterImage2, handler: nil)
-        wait(for: [posterImageExpectation2], timeout: 3)
+        XCTAssertTrue(posterImage2.waitForExistence(timeout: 3))
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")

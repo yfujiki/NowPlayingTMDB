@@ -39,9 +39,7 @@ class FastlaneSnapshot: XCTestCase {
 
         let collectionsQuery = app.collectionViews
         
-        let predicate = NSPredicate(format: "exists == 1")
-        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 1)
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
         
         let cells = collectionsQuery.cells
         let firstCell = cells.element.firstMatch

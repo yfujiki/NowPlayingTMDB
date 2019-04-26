@@ -31,10 +31,8 @@ class MoviesViewControllerUITests: XCTestCase {
     func testLanding() {
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
-
-        let predicate = NSPredicate(format: "exists == 1")
-        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 3)
+        
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
         
         let cells = collectionsQuery.cells
 
@@ -47,9 +45,7 @@ class MoviesViewControllerUITests: XCTestCase {
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
 
-        let predicate = NSPredicate(format: "exists == 1")
-        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
-        wait(for: [collectionViewExists], timeout: 3)
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
 
         let collectionsElement = collectionsQuery.element
 
