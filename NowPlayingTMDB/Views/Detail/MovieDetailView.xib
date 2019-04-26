@@ -78,7 +78,9 @@
                 <outlet property="descriptionLabel" destination="GFG-PW-Yca" id="Pgr-Im-KW8"/>
                 <outlet property="posterImageView" destination="6Bg-3H-XGf" id="Yrn-Se-oep"/>
                 <outlet property="titleLabel" destination="4z4-gd-ak9" id="maa-d7-Aav"/>
+                <outlet property="titleTitleLabel" destination="lAd-JX-nc7" id="ibn-pb-csx"/>
                 <outlet property="yearLabel" destination="U0d-uy-DxU" id="zRn-mR-bxZ"/>
+                <outlet property="yearTitleLabel" destination="yjf-ou-KQl" id="IeD-AU-32H"/>
             </connections>
             <point key="canvasLocation" x="34.782608695652179" y="-133.25892857142856"/>
         </view>

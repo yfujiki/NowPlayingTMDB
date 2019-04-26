@@ -11,8 +11,30 @@ import CoreGraphics
 import UIKit
 
 struct Constants {
-    static var DESCRIPTION_AREA_HEIGHT: CGFloat {
-        return 146 // ToDo: Need to be calculated dynamically from description text
+    static var TITLE_FONT: UIFont {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            return UIFont.systemFont(ofSize: 20)
+        } else {
+            return UIFont.systemFont(ofSize: 13)
+        }
+    }
+
+    static var VALUE_FONT: UIFont {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            return UIFont.systemFont(ofSize: 24)
+        } else {
+            return UIFont.systemFont(ofSize: 15)
+        }
+    }
+
+    static func DESCRIPTION_AREA_HEIGHT(text: String, width: CGFloat) -> CGFloat {
+        let font: UIFont = VALUE_FONT
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let finalSize = (text as NSString).boundingRect(with: size,
+                                        options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                        attributes: [NSAttributedString.Key.font : font],
+                                        context: nil)
+        return finalSize.height + 24
     }
 
     static func MOVIE_CELL_SIZE() -> CGSize {

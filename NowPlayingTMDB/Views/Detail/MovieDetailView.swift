@@ -14,8 +14,10 @@ class MovieDetailView: UICollectionReusableView {
 
     @IBOutlet weak var posterImageView: UIImageView!
 
+    @IBOutlet weak var titleTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var yearTitleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
 
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -39,6 +41,12 @@ class MovieDetailView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        titleTitleLabel.font = Constants.TITLE_FONT
+        titleLabel.font = Constants.VALUE_FONT
+        yearTitleLabel.font = Constants.TITLE_FONT
+        yearLabel.font = Constants.VALUE_FONT
+        descriptionLabel.font = Constants.VALUE_FONT
+
         self.addConstraint(descriptionLabelImageViewLeadingConstraint)
         descriptionLabelImageViewLeadingConstraint.isActive = false
         self.addConstraint(descriptionLabelImageViewVerticalConstraint)
@@ -53,10 +61,9 @@ class MovieDetailView: UICollectionReusableView {
         didSet {
             let imageWidth = Constants.POSTER_IMAGE_WIDTH_FOR_SIZE(size: posterImageView?.bounds.size ?? .zero)
             if let imagePath = movie?.posterFullPath(for: Int(imageWidth)) {
-                // ToDo : Placeholder
-                posterImageView?.pin_setImage(from: URL(string: imagePath))
+                posterImageView?.pin_setImage(from: URL(string: imagePath), placeholderImage: UIImage(named: "placeholder"))
             } else {
-                // ToDo : Placeholder
+                posterImageView?.image = UIImage(named: "placeholder")
             }
 
             titleLabel.text = movie?.title
