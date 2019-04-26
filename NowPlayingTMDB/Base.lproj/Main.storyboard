@@ -13,7 +13,7 @@
         <!--Now Playing-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Now Playing" id="BYZ-38-t0r" customClass="MoviesViewController" customModule="NowPlayingTMDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NowPlayingViewController" title="Now Playing" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MoviesViewController" customModule="NowPlayingTMDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,9 +35,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="PaM-fs-z6R" kind="show" identifier="movieSelected" id="KaR-Ew-X4g"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -81,7 +78,7 @@
         <!--Movie Detail-->
         <scene sceneID="48z-sY-PE3">
             <objects>
-                <viewController title="Movie Detail" id="PaM-fs-z6R" customClass="MovieDetailViewController" customModule="NowPlayingTMDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailViewController" title="Movie Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PaM-fs-z6R" customClass="MovieDetailViewController" customModule="NowPlayingTMDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SBr-qe-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

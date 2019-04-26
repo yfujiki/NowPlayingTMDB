@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol MoviesDelegateSelectionDelegate {
+protocol MoviesDelegateSelectionDelegate: class {
     func didSelectItemAt(item: Int)
 }
 
 class MoviesDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 
-    var selectionDelegate: MoviesDelegateSelectionDelegate?
+    weak var selectionDelegate: MoviesDelegateSelectionDelegate?
 
     private var cellSize: CGSize = .zero
 
