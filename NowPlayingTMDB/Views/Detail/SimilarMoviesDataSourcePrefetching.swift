@@ -18,6 +18,9 @@ class SimilarMoviesDataSourcePrefetching: NSObject, MoviesDataSourcePrefetching 
         return APIManager()
     }()
 
+    private var prefetchingPageSet = Set<Int>()
+    private var prefetchedPageSet = Set<Int>()
+
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         os_log("Start prefetching for indexPath : %@", indexPaths.description)
 
@@ -33,16 +36,30 @@ class SimilarMoviesDataSourcePrefetching: NSObject, MoviesDataSourcePrefetching 
 
         os_log("Next page is : %d", nextPage)
 
+        if prefetchingPageSet.contains(nextPage) {
+            os_log("The page is being fetched already")
+            return
+        }
+
+        if (prefetchedPageSet.contains(nextPage)) {
+            os_log("The page was fetched successfully already")
+            return
+        }
+
         guard let referenceMovieId = referenceMovieId else {
             os_log("No reference video Id")
             return
         }
 
+        prefetchingPageSet.insert(referenceMovieId)
         apiManager.similar(referenceMovieId: referenceMovieId, page: nextPage) { [weak self] result in
             switch(result) {
             case .success(let moviesPage):
                 self?.delegate?.didPrefetchMovies(moviesPage.results, for: indexPaths)
+                self?.prefetchingPageSet.remove(nextPage)
+                self?.prefetchedPageSet.insert(nextPage)
             case .failure(let error):
+                self?.prefetchingPageSet.remove(nextPage)
                 // ToDo: Display on the view
                 os_log("Failed to obtain error : %@", error.localizedDescription)
             }
