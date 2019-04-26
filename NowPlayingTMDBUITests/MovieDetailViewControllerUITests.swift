@@ -27,28 +27,33 @@ class MovieDetailViewControllerUITests: XCTestCase {
     }
 
     private func openDetailView() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+        
+        let predicate = NSPredicate(format: "exists == 1")
+        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
+        wait(for: [collectionViewExists], timeout: 1)
+
         let cells = collectionsQuery.cells
         let firstCell = cells.element.firstMatch
         XCTAssertTrue(firstCell.isHittable)
 
         firstCell.tap()
-
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
     }
 
     func testLanding() {
         openDetailView()
 
         let app = XCUIApplication()
+        
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        let predicate = NSPredicate(format: "exists == 1")
+        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
+        wait(for: [posterImageExpectation], timeout: 1)
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")
         let descriptionLabel = app.staticTexts.element(matching: .any, identifier: "description")
-
         XCTAssertTrue(titleLabel.isHittable)
         XCTAssertTrue(yearLabel.isHittable)
         XCTAssertTrue(descriptionLabel.isHittable)
@@ -66,6 +71,11 @@ class MovieDetailViewControllerUITests: XCTestCase {
 
         let app = XCUIApplication()
 
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        let predicate = NSPredicate(format: "exists == 1")
+        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
+        wait(for: [posterImageExpectation], timeout: 1)
+
         app.swipeUp()
 
         let collectionsQuery = app.collectionViews
@@ -81,6 +91,11 @@ class MovieDetailViewControllerUITests: XCTestCase {
         openDetailView()
 
         let app = XCUIApplication()
+        
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        let predicate = NSPredicate(format: "exists == 1")
+        let posterImageExpectation = expectation(for: predicate, evaluatedWith: posterImage, handler: nil)
+        wait(for: [posterImageExpectation], timeout: 1)
 
         app.swipeUp()
 
@@ -91,7 +106,10 @@ class MovieDetailViewControllerUITests: XCTestCase {
 
         firstCell.tap()
 
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
+        let posterImage2 = app.images.element(matching: .any, identifier: "posterImage")
+        let predicate2 = NSPredicate(format: "exists == 1")
+        let posterImageExpectation2 = expectation(for: predicate2, evaluatedWith: posterImage2, handler: nil)
+        wait(for: [posterImageExpectation2], timeout: 1)
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")

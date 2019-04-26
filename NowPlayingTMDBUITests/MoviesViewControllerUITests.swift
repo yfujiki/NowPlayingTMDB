@@ -29,10 +29,13 @@ class MoviesViewControllerUITests: XCTestCase {
     }
 
     func testLanding() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+
+        let predicate = NSPredicate(format: "exists == 1")
+        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
+        wait(for: [collectionViewExists], timeout: 1)
+        
         let cells = collectionsQuery.cells
 
         NSLog("Amount of cells \(cells.count)")
@@ -41,10 +44,13 @@ class MoviesViewControllerUITests: XCTestCase {
     }
 
     func testScrollDown() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+
+        let predicate = NSPredicate(format: "exists == 1")
+        let collectionViewExists = expectation(for: predicate, evaluatedWith: collectionsQuery.element, handler: nil)
+        wait(for: [collectionViewExists], timeout: 1)
+
         let collectionsElement = collectionsQuery.element
 
         for _ in 0..<5 {
