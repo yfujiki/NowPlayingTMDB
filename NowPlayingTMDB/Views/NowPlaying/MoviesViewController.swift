@@ -20,8 +20,8 @@ class MoviesViewController: UIViewController {
     private lazy var dataSource = {
         return MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
     }()
-    private lazy var prefetchingDataSource: MoviesDataSourcePrefetching = {
-        let dsc = MoviesDataSourcePrefetching()
+    private lazy var prefetchingDataSource: NowPlayingMoviesDataSourcePrefetching = {
+        let dsc = NowPlayingMoviesDataSourcePrefetching()
         dsc.delegate = self
         return dsc
     }()

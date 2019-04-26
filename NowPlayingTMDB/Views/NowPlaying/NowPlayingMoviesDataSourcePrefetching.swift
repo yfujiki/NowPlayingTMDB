@@ -9,14 +9,7 @@
 import UIKit
 import os
 
-protocol MoviesDataSourcePrefetchingDelegate: class {
-    func needsFetch(for indexPath: [IndexPath]) -> Bool
-    func nextPage(for indexPath: [IndexPath]) -> Int
-    func didPrefetchMovies(_ movies: [Movie], for indexPath: [IndexPath])
-}
-
-class MoviesDataSourcePrefetching: NSObject, UICollectionViewDataSourcePrefetching {
-
+class NowPlayingMoviesDataSourcePrefetching: NSObject, MoviesDataSourcePrefetching {
     weak var delegate: MoviesDataSourcePrefetchingDelegate?
 
     private lazy var apiManager: APIManager = {
