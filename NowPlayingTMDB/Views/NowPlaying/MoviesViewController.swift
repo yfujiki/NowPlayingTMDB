@@ -95,16 +95,17 @@ extension MoviesViewController: MoviesDataSourcePrefetchingDelegate {
     }
 
     func needsFetch(for indexPaths: [IndexPath]) -> Bool {
+        os_log("Data source count : %d, total results : %d", dataSource.count, totalResults)
         guard dataSource.count < totalResults else {
             return false
         }
 
-        return indexPaths.contains { $0.item + 1 >= self.dataSource.count }
+        return indexPaths.contains { $0.item + pageSize >= self.dataSource.count }
     }
 
     func nextPage(for indexPaths: [IndexPath]) -> Int {
         let max = indexPaths.map { $0.item }.max() ?? 0
-        let nextItem = max + 1
+        let nextItem = max + pageSize
         let nextPage = Int(nextItem / pageSize) + 1
         return nextPage
     }
