@@ -22,6 +22,6 @@ class PosterCell: UICollectionViewCell {
             return
         }
 
-        imageView.pin_setImage(from: URL(string: imagePath))
+        imageView.pin_setImage(from: URL(string: imagePath), placeholderImage: UIImage(named: "placeholder"))
     }
 }
