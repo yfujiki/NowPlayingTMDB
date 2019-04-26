@@ -19,6 +19,7 @@ class PosterCell: UICollectionViewCell {
 
     func setImagePath(imagePath: String?) {
         guard let imagePath = imagePath else {
+            imageView.image = UIImage(named: "placeholder")
             return
         }
 
