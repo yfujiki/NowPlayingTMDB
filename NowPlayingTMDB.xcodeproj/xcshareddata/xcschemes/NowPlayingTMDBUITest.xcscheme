@@ -37,6 +37,11 @@
                BlueprintName = "NowPlayingTMDBUITests"
                ReferencedContainer = "container:NowPlayingTMDB.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FastlaneSnapshot">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

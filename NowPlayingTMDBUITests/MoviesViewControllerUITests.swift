@@ -29,10 +29,11 @@ class MoviesViewControllerUITests: XCTestCase {
     }
 
     func testLanding() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+        
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
+        
         let cells = collectionsQuery.cells
 
         NSLog("Amount of cells \(cells.count)")
@@ -41,10 +42,11 @@ class MoviesViewControllerUITests: XCTestCase {
     }
 
     func testScrollDown() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
+
         let collectionsElement = collectionsQuery.element
 
         for _ in 0..<5 {

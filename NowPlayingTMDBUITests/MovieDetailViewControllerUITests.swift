@@ -27,28 +27,29 @@ class MovieDetailViewControllerUITests: XCTestCase {
     }
 
     private func openDetailView() {
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
-
         let app = XCUIApplication()
         let collectionsQuery = app.collectionViews
+        
+        XCTAssertTrue(collectionsQuery.element.waitForExistence(timeout: 3))
+
         let cells = collectionsQuery.cells
         let firstCell = cells.element.firstMatch
         XCTAssertTrue(firstCell.isHittable)
 
         firstCell.tap()
-
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
     }
 
     func testLanding() {
         openDetailView()
 
         let app = XCUIApplication()
+        
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")
         let descriptionLabel = app.staticTexts.element(matching: .any, identifier: "description")
-
         XCTAssertTrue(titleLabel.isHittable)
         XCTAssertTrue(yearLabel.isHittable)
         XCTAssertTrue(descriptionLabel.isHittable)
@@ -66,6 +67,9 @@ class MovieDetailViewControllerUITests: XCTestCase {
 
         let app = XCUIApplication()
 
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
+
         app.swipeUp()
 
         let collectionsQuery = app.collectionViews
@@ -81,6 +85,9 @@ class MovieDetailViewControllerUITests: XCTestCase {
         openDetailView()
 
         let app = XCUIApplication()
+        
+        let posterImage = app.images.element(matching: .any, identifier: "posterImage")
+        XCTAssertTrue(posterImage.waitForExistence(timeout: 3))
 
         app.swipeUp()
 
@@ -91,7 +98,8 @@ class MovieDetailViewControllerUITests: XCTestCase {
 
         firstCell.tap()
 
-        Thread.sleep(until: Date(timeIntervalSinceNow: 1))
+        let posterImage2 = app.images.element(matching: .any, identifier: "posterImage")
+        XCTAssertTrue(posterImage2.waitForExistence(timeout: 3))
 
         let titleLabel = app.staticTexts.element(matching: .any, identifier: "title")
         let yearLabel = app.staticTexts.element(matching: .any, identifier: "year")
