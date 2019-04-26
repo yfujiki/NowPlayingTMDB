@@ -41,6 +41,12 @@ class MovieDetailView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        titleTitleLabel.font = Constants.TITLE_FONT
+        titleLabel.font = Constants.VALUE_FONT
+        yearTitleLabel.font = Constants.TITLE_FONT
+        yearLabel.font = Constants.VALUE_FONT
+        descriptionLabel.font = Constants.VALUE_FONT
+
         self.addConstraint(descriptionLabelImageViewLeadingConstraint)
         descriptionLabelImageViewLeadingConstraint.isActive = false
         self.addConstraint(descriptionLabelImageViewVerticalConstraint)
@@ -85,14 +91,6 @@ class MovieDetailView: UICollectionReusableView {
                 descriptionLabelReleaseYearLeadingConstraint,
                 descriptionLabelReleaseYearVerticalConstraint
                 ])
-        }
-
-        if (traitCollection.userInterfaceIdiom == .pad) {
-            titleTitleLabel.font = UIFont.systemFont(ofSize: 20)
-            titleLabel.font = UIFont.systemFont(ofSize: 24)
-            yearTitleLabel.font = UIFont.systemFont(ofSize: 20)
-            yearLabel.font = UIFont.systemFont(ofSize: 24)
-            descriptionLabel.font = UIFont.systemFont(ofSize: 24)
         }
     }
 }

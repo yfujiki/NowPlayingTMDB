@@ -77,7 +77,11 @@ class MovieDetailViewController: UIViewController {
         let screenWidth = size.width
         let detailViewImageWidth = screenWidth / 3
         let detailViewImageHeight = detailViewImageWidth / 0.675 + 16 * 2
-        let detailViewHeight = Constants.IS_WIDE_LAYOUT(screenWidth: screenWidth) ? detailViewImageHeight + Constants.DESCRIPTION_AREA_HEIGHT : detailViewImageHeight
+        var detailViewHeight = detailViewImageHeight
+
+        if Constants.IS_WIDE_LAYOUT(screenWidth: screenWidth) {
+            detailViewHeight += Constants.DESCRIPTION_AREA_HEIGHT(text: movie?.overview ?? "", width: size.width)
+        }
 
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: detailViewHeight)
