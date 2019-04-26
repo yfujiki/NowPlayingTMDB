@@ -11,6 +11,10 @@ import CoreGraphics
 import UIKit
 
 struct Constants {
+    static var DESCRIPTION_AREA_HEIGHT: CGFloat {
+        return 146 // ToDo: Need to be calculated dynamically from description text
+    }
+
     static func MOVIE_CELL_SIZE() -> CGSize {
 
         let width = PORTRAIT_SCREEN_WIDTH() / 3 - 20
@@ -43,5 +47,17 @@ struct Constants {
 
     static func PORTRAIT_SCREEN_WIDTH() -> CGFloat {
         return min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+    }
+
+    static func PARSE_YEAR_FROM_YYYYMMDD(yyyymmdd: String?) -> String {
+        guard let yyyy = yyyymmdd?.split(separator: "-").first else {
+            return ""
+        }
+
+        return String(yyyy)
+    }
+
+    static func IS_WIDE_LAYOUT(screenWidth: CGFloat) -> Bool {
+        return (screenWidth <= 414)
     }
 }

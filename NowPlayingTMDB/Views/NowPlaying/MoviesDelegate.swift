@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol MoviesDelegateSelectionDelegate {
+    func didSelectItemAt(item: Int)
+}
+
 class MoviesDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+
+    var selectionDelegate: MoviesDelegateSelectionDelegate?
 
     private var cellSize: CGSize = .zero
 
@@ -26,7 +32,7 @@ class MoviesDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -35,5 +41,9 @@ class MoviesDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectionDelegate?.didSelectItemAt(item: indexPath.item)
     }
 }

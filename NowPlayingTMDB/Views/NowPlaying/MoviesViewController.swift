@@ -14,19 +14,21 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     private lazy var dataSource = {
-        MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
+        return MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
     }()
-
-    private lazy var delegate = {
-        MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+    private lazy var delegate: MoviesDelegate = {
+        let del = MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+        del.selectionDelegate = self
+        return del
     }()
-
     private lazy var apiManager = {
         APIManager()
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Now Playing"
 
         collectionView.register(UINib(nibName: "PosterCell", bundle: nil), forCellWithReuseIdentifier: PosterCell.self.description())
         collectionView.dataSource = dataSource
@@ -44,5 +46,25 @@ class MoviesViewController: UIViewController {
             }
         }
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "movieSelected") {
+            let movieDetailViewController = segue.destination as! MovieDetailViewController
+            guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
+                return
+            }
+
+            if let movie = self.dataSource.movie(at: selectedIndexPath.item) {
+                movieDetailViewController.movie = movie
+            }
+
+            collectionView.deselectItem(at: selectedIndexPath, animated: true)
+        }
+    }
 }
 
+extension MoviesViewController: MoviesDelegateSelectionDelegate {
+    func didSelectItemAt(item: Int) {
+        performSegue(withIdentifier: "movieSelected", sender: nil)
+    }
+}
