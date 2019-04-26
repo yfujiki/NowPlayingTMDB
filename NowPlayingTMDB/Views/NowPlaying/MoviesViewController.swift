@@ -20,8 +20,8 @@ class MoviesViewController: UIViewController {
     private lazy var dataSource = {
         return MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
     }()
-    private lazy var prefetchingDataSource: NowPlayingMoviesDataSourcePrefetching = {
-        let dsc = NowPlayingMoviesDataSourcePrefetching()
+    private lazy var prefetchingDataSource: MoviesDataSourcePrefetching = {
+        let dsc = MoviesDataSourcePrefetching()
         dsc.delegate = self
         return dsc
     }()
@@ -82,6 +82,21 @@ extension MoviesViewController: MoviesDelegateSelectionDelegate {
 }
 
 extension MoviesViewController: MoviesDataSourcePrefetchingDelegate {
+    func prefetch(page: Int, afterSuccess: @escaping () -> Void, afterFailure: @escaping () -> Void) {
+        apiManager.nowPlaying(page: page) { [weak self] result in
+            switch(result) {
+            case .success(let moviesPage):
+                self?.dataSource.addMovies(moviesPage.results)
+                self?.collectionView.reloadData()
+                afterSuccess()
+            case .failure(let error):
+                // ToDo: Display on the view
+                os_log("Failed to obtain error : %@", error.localizedDescription)
+                afterFailure()
+            }
+        }
+    }
+
     func needsFetch(for indexPaths: [IndexPath]) -> Bool {
         guard dataSource.count < totalResults else {
             return false
@@ -95,10 +110,5 @@ extension MoviesViewController: MoviesDataSourcePrefetchingDelegate {
         let nextItem = max + 1
         let nextPage = Int(nextItem / pageSize) + 1
         return nextPage
-    }
-
-    func didPrefetchMovies(_ movies: [Movie], for indexPath: [IndexPath]) {
-        dataSource.addMovies(movies)
-        collectionView.reloadData()
     }
 }

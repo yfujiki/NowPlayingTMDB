@@ -27,9 +27,8 @@ class MovieDetailViewController: UIViewController {
         MovieDetailDataSource(movie: movie, size: Constants.MOVIE_CELL_SIZE())
     }()
 
-    private lazy var prefetchingDataSource: SimilarMoviesDataSourcePrefetching = {
-        let dsc = SimilarMoviesDataSourcePrefetching()
-        dsc.referenceMovieId = movie?.id
+    private lazy var prefetchingDataSource: MoviesDataSourcePrefetching = {
+        let dsc = MoviesDataSourcePrefetching()
         dsc.delegate = self
         return dsc
     }()
@@ -85,27 +84,47 @@ class MovieDetailViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         configureHeaderHeight(for: size)
     }
+
+    func didPrefetchMovies(_ movies: [Movie]) {
+        dataSource.addMovies(movies)
+        collectionView.reloadData()
+    }
 }
 
 
 extension MovieDetailViewController: MoviesDataSourcePrefetchingDelegate {
+    func prefetch(page: Int, afterSuccess: @escaping () -> Void, afterFailure: @escaping () -> Void) {
+        guard let referenceMovieId = movie?.id else {
+            os_log("No reference video Id")
+            return
+        }
+
+        apiManager.similar(referenceMovieId: referenceMovieId, page: page) { [weak self] result in
+            switch(result) {
+            case .success(let moviesPage):
+                self?.dataSource.addMovies(moviesPage.results)
+                self?.collectionView.reloadData()
+                afterSuccess()
+            case .failure(let error):
+                // ToDo: Display on the view
+                os_log("Failed to obtain error : %@", error.localizedDescription)
+                afterFailure()
+            }
+        }
+    }
+
     func needsFetch(for indexPaths: [IndexPath]) -> Bool {
         guard dataSource.count < totalResults else {
             return false
         }
 
-        return indexPaths.contains { $0.item + 1 >= self.dataSource.count }
+        return indexPaths.contains { $0.item + pageSize >= self.dataSource.count }
     }
 
     func nextPage(for indexPaths: [IndexPath]) -> Int {
         let max = indexPaths.map { $0.item }.max() ?? 0
-        let nextItem = max + 1
+        let nextItem = max + pageSize
         let nextPage = Int(nextItem / pageSize) + 1
         return nextPage
-    }
-
-    func didPrefetchMovies(_ movies: [Movie], for indexPath: [IndexPath]) {
-        dataSource.addMovies(movies)
-        collectionView.reloadData()
     }
 }
