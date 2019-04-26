@@ -8,11 +8,13 @@
 
 import UIKit
 import os
+import SkeletonView
 
 class MoviesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var failedLabel: UILabel!
+    
     private var pageSize = 20
 
     private var totalResults = 0
@@ -44,19 +46,26 @@ class MoviesViewController: UIViewController {
         collectionView.prefetchDataSource = prefetchingDataSource
         collectionView.delegate = delegate
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        collectionView.isSkeletonable = true
 
-        apiManager.nowPlaying(page: 1) { [weak self] result in
-            switch(result) {
-            case .success(let moviesPage):
-                self?.dataSource.addMovies(moviesPage.results)
-                self?.collectionView.reloadData()
-                self?.pageSize = max(moviesPage.results.count, 1)
-                self?.totalResults = moviesPage.totalResults
-            case .failure(let error):
-                // ToDo: Display on the view
-                os_log("Failed to obtain error : %@", error.localizedDescription)
+        view.isSkeletonable = true
+        collectionView.prepareSkeleton(completion: { [weak self] _ in
+            self?.view.showAnimatedGradientSkeleton()
+            self?.apiManager.nowPlaying(page: 1) { [weak self] result in
+                switch(result) {
+                case .success(let moviesPage):
+                    self?.dataSource.addMovies(moviesPage.results)
+                    self?.collectionView.reloadData()
+                    self?.pageSize = max(moviesPage.results.count, 1)
+                    self?.totalResults = moviesPage.totalResults
+                    self?.view.hideSkeleton()
+                case .failure(let error):
+                    self?.view.hideSkeleton()
+                    self?.failedLabel.isHidden = false
+                    os_log("Failed to obtain movies with error : %@", error.localizedDescription)
+                }
             }
-        }
+        })
     }
 }
 

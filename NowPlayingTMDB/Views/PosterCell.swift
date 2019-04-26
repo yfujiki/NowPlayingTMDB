@@ -8,6 +8,7 @@
 
 import UIKit
 import PINRemoteImage
+import SkeletonView
 
 class PosterCell: UICollectionViewCell {
 
@@ -15,6 +16,8 @@ class PosterCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        imageView.isSkeletonable = true
     }
 
     func setImagePath(imagePath: String?) {

@@ -12,6 +12,7 @@ import os
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var failedLabel: UILabel!
 
     private var pageSize = 20
 
@@ -51,6 +52,8 @@ class MovieDetailViewController: UIViewController {
         collectionView.prefetchDataSource = prefetchingDataSource
         collectionView.delegate = delegate
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        collectionView.isSkeletonable = true
+
         configureHeaderHeight(for: UIScreen.main.bounds.size)
 
         collectionView.register(UINib(nibName: "MovieDetailView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MovieDetailView.self.description())
@@ -59,16 +62,22 @@ class MovieDetailViewController: UIViewController {
             return
         }
 
-        apiManager.similar(referenceMovieId: movie.id, page: 1) { [weak self] result in
-            switch(result) {
-            case .success(let moviesPage):
-                self?.dataSource.addMovies(moviesPage.results)
-                self?.collectionView.reloadData()
-                self?.pageSize = max(moviesPage.results.count, 1)
-                self?.totalResults = moviesPage.totalResults
-            case .failure(let error):
-                // ToDo: Display on the view
-                os_log("Failed to obtain error : %@", error.localizedDescription)
+        view.isSkeletonable = true
+        collectionView.prepareSkeleton { [weak self] _ in
+            self?.view.showAnimatedGradientSkeleton()
+            self?.apiManager.similar(referenceMovieId: movie.id, page: 1) { [weak self] result in
+                switch(result) {
+                case .success(let moviesPage):
+                    self?.dataSource.addMovies(moviesPage.results)
+                    self?.collectionView.reloadData()
+                    self?.pageSize = max(moviesPage.results.count, 1)
+                    self?.totalResults = moviesPage.totalResults
+                    self?.view.hideSkeleton()
+                case .failure(let error):
+                    self?.view.hideSkeleton()
+                    self?.failedLabel.isHidden = false
+                    os_log("Failed to obtain movies with error : %@", error.localizedDescription)
+                }
             }
         }
     }

@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import SkeletonView
 
-class MoviesDataSource: NSObject, UICollectionViewDataSource {
+class MoviesDataSource: NSObject, SkeletonCollectionViewDataSource {
     private var movies: Array<Movie>
 
     private var cellSize: CGSize = .zero
@@ -54,4 +55,8 @@ class MoviesDataSource: NSObject, UICollectionViewDataSource {
 
         return cell
     }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return PosterCell.self.description()
+    }    
 }
