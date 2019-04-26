@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB14FF4722734E3700700125 /* SkeletonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB14FF4622734E3700700125 /* SkeletonView.framework */; };
 		DB961CCC22718C8900AC80B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */; };
 		DB961CCE22718F5D00AC80B9 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */; };
 		DB961CD022718F7500AC80B9 /* MovieDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB14FF4622734E3700700125 /* SkeletonView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkeletonView.framework; path = Carthage/Build/iOS/SkeletonView.framework; sourceTree = "<group>"; };
 		DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailView.xib; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB14FF4722734E3700700125 /* SkeletonView.framework in Frameworks */,
 				DBE3D0862270AFC500836C2E /* PINOperation.framework in Frameworks */,
 				DBE3D0872270AFC500836C2E /* PINCache.framework in Frameworks */,
 				DBE3D0882270AFC500836C2E /* PINRemoteImage.framework in Frameworks */,
@@ -245,6 +248,7 @@
 		DBE3D06C227061A900836C2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB14FF4622734E3700700125 /* SkeletonView.framework */,
 				DBE3D0842270AFC500836C2E /* PINCache.framework */,
 				DBE3D0832270AFC500836C2E /* PINOperation.framework */,
 				DBE3D0852270AFC500836C2E /* PINRemoteImage.framework */,
@@ -429,6 +433,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/PINOperation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PINCache.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PINRemoteImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SkeletonView.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -438,6 +443,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINOperation.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINCache.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PINRemoteImage.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SkeletonView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -643,7 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -665,7 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -688,7 +694,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -713,7 +719,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -737,7 +743,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -762,7 +768,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
