@@ -41,11 +41,11 @@ class MovieDetailView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        titleTitleLabel.font = Constants.TITLE_FONT
-        titleLabel.font = Constants.VALUE_FONT
-        yearTitleLabel.font = Constants.TITLE_FONT
-        yearLabel.font = Constants.VALUE_FONT
-        descriptionLabel.font = Constants.VALUE_FONT
+        titleTitleLabel.font = Global.titleFont
+        titleLabel.font = Global.valueFont
+        yearTitleLabel.font = Global.titleFont
+        yearLabel.font = Global.valueFont
+        descriptionLabel.font = Global.valueFont
 
         self.addConstraint(descriptionLabelImageViewLeadingConstraint)
         descriptionLabelImageViewLeadingConstraint.isActive = false
@@ -59,7 +59,7 @@ class MovieDetailView: UICollectionReusableView {
 
     var movie: Movie? {
         didSet {
-            let imageWidth = Constants.POSTER_IMAGE_WIDTH_FOR_SIZE(size: posterImageView?.bounds.size ?? .zero)
+            let imageWidth = Global.posterImageWidthForSize(size: posterImageView?.bounds.size ?? .zero)
             if let imagePath = movie?.posterFullPath(for: Int(imageWidth)) {
                 posterImageView?.pin_setImage(from: URL(string: imagePath), placeholderImage: UIImage(named: "placeholder"))
             } else {
@@ -67,13 +67,13 @@ class MovieDetailView: UICollectionReusableView {
             }
 
             titleLabel.text = movie?.title
-            yearLabel.text = Constants.PARSE_YEAR_FROM_YYYYMMDD(yyyymmdd: movie?.releaseDate)
+            yearLabel.text = Global.parseYearFromYYYYMMDD(yyyymmdd: movie?.releaseDate)
             descriptionLabel.text = movie?.overview
         }
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if (Constants.IS_WIDE_LAYOUT(screenWidth: UIScreen.main.bounds.width)) {
+        if (Global.isWideLayout(screenWidth: UIScreen.main.bounds.width)) {
             NSLayoutConstraint.deactivate([
                 descriptionLabelReleaseYearLeadingConstraint,
                 descriptionLabelReleaseYearVerticalConstraint

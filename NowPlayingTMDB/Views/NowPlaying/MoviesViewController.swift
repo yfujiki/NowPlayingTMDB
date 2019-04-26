@@ -18,7 +18,7 @@ class MoviesViewController: UIViewController {
     private var totalResults = 0
 
     private lazy var dataSource = {
-        return MoviesDataSource(size: Constants.MOVIE_CELL_SIZE())
+        return MoviesDataSource(size: Global.movieCellSize())
     }()
     private lazy var prefetchingDataSource: MoviesDataSourcePrefetching = {
         let dsc = MoviesDataSourcePrefetching()
@@ -26,7 +26,7 @@ class MoviesViewController: UIViewController {
         return dsc
     }()
     private lazy var delegate: MoviesDelegate = {
-        let del = MoviesDelegate(size: Constants.MOVIE_CELL_SIZE())
+        let del = MoviesDelegate(size: Global.movieCellSize())
         del.selectionDelegate = self
         return del
     }()

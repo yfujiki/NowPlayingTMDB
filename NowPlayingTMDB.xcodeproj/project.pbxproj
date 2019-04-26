@@ -49,7 +49,7 @@
 		DBE3D0872270AFC500836C2E /* PINCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE3D0842270AFC500836C2E /* PINCache.framework */; };
 		DBE3D0882270AFC500836C2E /* PINRemoteImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE3D0852270AFC500836C2E /* PINRemoteImage.framework */; };
 		DBE3D08A227124E300836C2E /* MoviesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D089227124E300836C2E /* MoviesDelegate.swift */; };
-		DBE3D08C227126D300836C2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D08B227126D300836C2E /* Constants.swift */; };
+		DBE3D08C227126D300836C2E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE3D08B227126D300836C2E /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		DBE3D0842270AFC500836C2E /* PINCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINCache.framework; path = Carthage/Build/iOS/PINCache.framework; sourceTree = "<group>"; };
 		DBE3D0852270AFC500836C2E /* PINRemoteImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PINRemoteImage.framework; path = Carthage/Build/iOS/PINRemoteImage.framework; sourceTree = "<group>"; };
 		DBE3D089227124E300836C2E /* MoviesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDelegate.swift; sourceTree = "<group>"; };
-		DBE3D08B227126D300836C2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DBE3D08B227126D300836C2E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,7 @@
 				DBE3D05E227040DA00836C2E /* Movie.swift */,
 				DBE3D0602270429000836C2E /* JSONCodable.swift */,
 				DBE3D06622704DA200836C2E /* MoviesPage.swift */,
-				DBE3D08B227126D300836C2E /* Constants.swift */,
+				DBE3D08B227126D300836C2E /* Global.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				DBE3D02F22703FD100836C2E /* AppDelegate.swift in Sources */,
 				DB961CD72272BD8700AC80B9 /* MoviesDataSourcePrefetching.swift in Sources */,
 				DBE3D06522704BE300836C2E /* APIManager.swift in Sources */,
-				DBE3D08C227126D300836C2E /* Constants.swift in Sources */,
+				DBE3D08C227126D300836C2E /* Global.swift in Sources */,
 				DB961CCE22718F5D00AC80B9 /* MovieDetailView.swift in Sources */,
 				DBE3D07C2270AACC00836C2E /* MoviesDataSource.swift in Sources */,
 				DBE3D06722704DA200836C2E /* MoviesPage.swift in Sources */,
