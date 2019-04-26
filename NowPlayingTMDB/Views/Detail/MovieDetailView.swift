@@ -14,8 +14,10 @@ class MovieDetailView: UICollectionReusableView {
 
     @IBOutlet weak var posterImageView: UIImageView!
 
+    @IBOutlet weak var titleTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
 
+    @IBOutlet weak var yearTitleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
 
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -84,6 +86,14 @@ class MovieDetailView: UICollectionReusableView {
                 descriptionLabelReleaseYearLeadingConstraint,
                 descriptionLabelReleaseYearVerticalConstraint
                 ])
+        }
+
+        if (traitCollection.userInterfaceIdiom == .pad) {
+            titleTitleLabel.font = UIFont.systemFont(ofSize: 20)
+            titleLabel.font = UIFont.systemFont(ofSize: 24)
+            yearTitleLabel.font = UIFont.systemFont(ofSize: 20)
+            yearLabel.font = UIFont.systemFont(ofSize: 24)
+            descriptionLabel.font = UIFont.systemFont(ofSize: 24)
         }
     }
 }
