@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB14FF4322731C5100700125 /* FastlaneSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14FF4222731C5100700125 /* FastlaneSnapshot.swift */; };
+		DB14FF4522732A7600700125 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14FF4422732A7600700125 /* SnapshotHelper.swift */; };
 		DB961CCC22718C8900AC80B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */; };
 		DB961CCE22718F5D00AC80B9 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */; };
 		DB961CD022718F7500AC80B9 /* MovieDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB14FF4222731C5100700125 /* FastlaneSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshot.swift; sourceTree = "<group>"; };
+		DB14FF4422732A7600700125 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailView.xib; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		DBE3D04D22703FD200836C2E /* NowPlayingTMDBUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DB14FF4422732A7600700125 /* SnapshotHelper.swift */,
 				DB961CDC2272E7EE00AC80B9 /* NowPlaying1.json */,
 				DB961CDE2272E7EE00AC80B9 /* NowPlaying2.json */,
 				DB961CDD2272E7EE00AC80B9 /* Similar1.json */,
@@ -219,6 +224,7 @@
 				DBE3D05022703FD200836C2E /* Info.plist */,
 				DB961CDA2272E2CB00AC80B9 /* MoviesViewControllerUITests.swift */,
 				DB961CEB2272FCD200AC80B9 /* MovieDetailViewControllerUITests.swift */,
+				DB14FF4222731C5100700125 /* FastlaneSnapshot.swift */,
 			);
 			path = NowPlayingTMDBUITests;
 			sourceTree = "<group>";
@@ -482,8 +488,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB14FF4322731C5100700125 /* FastlaneSnapshot.swift in Sources */,
 				DB961CEC2272FCD200AC80B9 /* MovieDetailViewControllerUITests.swift in Sources */,
 				DB961CDB2272E2CB00AC80B9 /* MoviesViewControllerUITests.swift in Sources */,
+				DB14FF4522732A7600700125 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,7 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -665,7 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9L632HWAR;
+				DEVELOPMENT_TEAM = BTWWPDZ4GE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
