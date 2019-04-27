@@ -37,6 +37,13 @@ Fetches/displays currently playing movie information from TMDB. Able to drill do
 
 ### Install
 
+#### 0. Environment
+
+- Xcode 10.2.1
+- iOS 12.2
+- Carthage 0.33.0
+- Fastlane 2.121.1
+
 #### 1. Carthage bootstrap
 
 ```
