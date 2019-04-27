@@ -82,7 +82,7 @@ and it will generate screenshots as listed above.
 
 #### Travis CI integration
 
-It was an optional requirement. You can see `.travis.yml` and closed pull requests.
+It was an optional requirement. You can see `.travis.yml` and closed pull requests. Carthage folder is cached so it runs much faster after the first successful build with the same dependencies.
 
 #### Data Mocking with OHHTTPStubs
 
