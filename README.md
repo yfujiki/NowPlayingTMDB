@@ -3,7 +3,7 @@
 ![language](https://img.shields.io/badge/language-swift5-green.svg)
 ![twitter](https://img.shields.io/badge/twitter-@yfujiki-blue.svg)
 
-# NowPlayingTMDB
+## NowPlayingTMDB
 
 Show case project for a potential employer. Displays now-playing list from TMDB.
 
