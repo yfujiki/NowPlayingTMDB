@@ -138,7 +138,6 @@ extension MovieDetailViewController: MoviesDataSourcePrefetchingDelegate {
                 self?.collectionView.reloadData()
                 afterSuccess()
             case .failure(let error):
-                // ToDo: Display on the view
                 os_log("Failed to obtain error : %@", error.localizedDescription)
                 afterFailure()
             }
