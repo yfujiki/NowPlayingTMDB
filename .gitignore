@@ -99,3 +99,4 @@ DerivedData/
 
 ## Sensitive information file
 keys.properties
+.gitsecret/keys/random_seed
