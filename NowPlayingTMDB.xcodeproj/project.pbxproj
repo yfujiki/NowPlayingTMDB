@@ -10,6 +10,8 @@
 		DB14FF4322731C5100700125 /* FastlaneSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14FF4222731C5100700125 /* FastlaneSnapshot.swift */; };
 		DB14FF4522732A7600700125 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14FF4422732A7600700125 /* SnapshotHelper.swift */; };
 		DB14FF4722734E3700700125 /* SkeletonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB14FF4622734E3700700125 /* SkeletonView.framework */; };
+		DB48F9E12298A0C90045C0F5 /* AppSecrets.stencil in Sources */ = {isa = PBXBuildFile; fileRef = DB48F9E02298A0C90045C0F5 /* AppSecrets.stencil */; };
+		DB48F9E72298A2450045C0F5 /* AppSecrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB48F9E62298A2450045C0F5 /* AppSecrets.generated.swift */; };
 		DB961CCC22718C8900AC80B9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */; };
 		DB961CCE22718F5D00AC80B9 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */; };
 		DB961CD022718F7500AC80B9 /* MovieDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */; };
@@ -76,6 +78,8 @@
 		DB14FF4222731C5100700125 /* FastlaneSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshot.swift; sourceTree = "<group>"; };
 		DB14FF4422732A7600700125 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DB14FF4622734E3700700125 /* SkeletonView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkeletonView.framework; path = Carthage/Build/iOS/SkeletonView.framework; sourceTree = "<group>"; };
+		DB48F9E02298A0C90045C0F5 /* AppSecrets.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppSecrets.stencil; sourceTree = "<group>"; };
+		DB48F9E62298A2450045C0F5 /* AppSecrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSecrets.generated.swift; sourceTree = "<group>"; };
 		DB961CCB22718C8900AC80B9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		DB961CCD22718F5D00AC80B9 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		DB961CCF22718F7500AC80B9 /* MovieDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailView.xib; sourceTree = "<group>"; };
@@ -153,6 +157,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB48F9E22298A1270045C0F5 /* Stencils */ = {
+			isa = PBXGroup;
+			children = (
+				DB48F9E02298A0C90045C0F5 /* AppSecrets.stencil */,
+			);
+			path = Stencils;
+			sourceTree = "<group>";
+		};
+		DB48F9E52298A2450045C0F5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				DB48F9E62298A2450045C0F5 /* AppSecrets.generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		DB961CD1227198C600AC80B9 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +208,8 @@
 		DBE3D02D22703FD100836C2E /* NowPlayingTMDB */ = {
 			isa = PBXGroup;
 			children = (
+				DB48F9E52298A2450045C0F5 /* Generated */,
+				DB48F9E22298A1270045C0F5 /* Stencils */,
 				DBE3D0792270AA8200836C2E /* Views */,
 				DBE3D05D227040AF00836C2E /* Models */,
 				DBE3D05C2270409900836C2E /* API */,
@@ -292,6 +314,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBE3D05322703FD200836C2E /* Build configuration list for PBXNativeTarget "NowPlayingTMDB" */;
 			buildPhases = (
+				DB48F9E32298A14A0045C0F5 /* Sourcery */,
 				DBE3D02722703FD100836C2E /* Sources */,
 				DBE3D02822703FD100836C2E /* Frameworks */,
 				DBE3D02922703FD100836C2E /* Resources */,
@@ -427,6 +450,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DB48F9E32298A14A0045C0F5 /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source keys.properties\ntools/sourcery --sources . --templates NowPlayingTMDB/Stencils/AppSecrets.stencil --output NowPlayingTMDB/Generated --args tmdbApiKey=\\\"$TMDB_API_KEY\\\"\n";
+		};
 		DBE3D06F227061CC00836C2E /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBE3D08A227124E300836C2E /* MoviesDelegate.swift in Sources */,
+				DB48F9E12298A0C90045C0F5 /* AppSecrets.stencil in Sources */,
 				DBE3D0812270ADAE00836C2E /* PosterCell.swift in Sources */,
 				DBE3D03122703FD100836C2E /* MoviesViewController.swift in Sources */,
 				DBE3D02F22703FD100836C2E /* AppDelegate.swift in Sources */,
@@ -473,6 +515,7 @@
 				DBE3D07C2270AACC00836C2E /* MoviesDataSource.swift in Sources */,
 				DBE3D06722704DA200836C2E /* MoviesPage.swift in Sources */,
 				DBE3D05F227040DA00836C2E /* Movie.swift in Sources */,
+				DB48F9E72298A2450045C0F5 /* AppSecrets.generated.swift in Sources */,
 				DB961CCC22718C8900AC80B9 /* MovieDetailViewController.swift in Sources */,
 				DB961CE62272FABA00AC80B9 /* UITestHelper.swift in Sources */,
 				DB961CD3227198FF00AC80B9 /* MovieDetailDataSource.swift in Sources */,

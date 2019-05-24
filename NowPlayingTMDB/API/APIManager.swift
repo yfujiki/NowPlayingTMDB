@@ -8,7 +8,7 @@
 
 import Foundation
 
-let API_KEY = "caf895c3e8d7b13a7a9b70ca2a9cfd6e" // ToDo : Read from external file
+let API_KEY = AppSecrets.tmdbApiKey
 
 enum NetworkError: Error {
     case badURL
