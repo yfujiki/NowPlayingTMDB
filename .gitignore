@@ -97,4 +97,5 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
-
+## Sensitive information file
+keys.properties
