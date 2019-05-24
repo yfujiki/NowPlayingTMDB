@@ -455,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "source keys.properties\ntools/sourcery --sources . --templates NowPlayingTMDB/Stencils/AppSecrets.stencil --output NowPlayingTMDB/Generated --args tmdbApiKey=\\\"$TMDB_API_KEY\\\"\n";
+			shellScript = "if [[ -f \"keys.properties\" ]]; then\n  source keys.properties\nfi\n\nif [[ -z \"${TMDB_API_KEY}\" ]]; then\n  echo \"TMDB_API_KEY not specified\"\n  exit 1\nfi\n\ntools/sourcery --sources . --templates NowPlayingTMDB/Stencils/AppSecrets.stencil --output NowPlayingTMDB/Generated --args tmdbApiKey=\\\"$TMDB_API_KEY\\\"\n";
 		};
 		DBE3D06F227061CC00836C2E /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
